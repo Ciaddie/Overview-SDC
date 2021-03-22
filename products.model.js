@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const products = new Schema(
+const productsSchema = new Schema(
 [
   {
     id: Number,
@@ -10,33 +10,12 @@ const products = new Schema(
     description: String,
     category: String,
     default_price: Number
-    features: [
-      {
-        features_id: Number
-        features: String,
-        value: String
-      }
-    ],
-    styles: [
-      name: String,
-      original_price: Number,
-      sale_price: Number,
-      default: Boolean,
-      photos: [
-        {
-          style_id: Number
-          thumbnail_url: String,
-          photo_url: String
-        }
-      ],
-      skus: [
-        {
-          style_id: Number,
-          quantity: Number,
-          size: String
-        }
-      ]
-    ]
   }
 ]
 );
+
+const Products = mongoose.model('Products', productsSchema);
+
+module.exports = Products;
+
+
